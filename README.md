@@ -28,6 +28,7 @@ Europe 2016. It helps explain how Flow's "flows" work and what OpenT is.
 
 - parse phase
 - inference phase
+  - phase where type graph would be created from AST
   - traverse depth-first
   - learns about the code before making assumptions
   - flow constraint
@@ -35,6 +36,33 @@ Europe 2016. It helps explain how Flow's "flows" work and what OpenT is.
       1. a --- OpenT { id: 0 }
       2. StrT { value: "abcd" }
       3. StrT { value: "abcd" } flows into an OpenT { id: 0 }
+      4. note that `a` is still `OpenT`
+  - data types
+  - use types
+    - describe actions on other types
+- evaluate phase
+  - phase where errors would be found
+  - runs through one flow constraint at a time
+    - and start from the bottom
+    - Flow has a file, in which rules are defined on how to interpret flow constraints
+  - in the process of evaluating flow constraints, Flow may create new types
+    - for `GetPropT` two new types would be created `LookupT` and `InstanceT`
+  - `MixedT` is a supertype of all possible types
+    - it is like a black hole
+      - anything could flow into it, but you couldn't pull anything out of it
+  - type
+    - reason data: where it is defined
+      - used to generate a useful error messages
+- module boundaries
+  - each module is given to a worker poll
+  - processed in parallel
+  - every import is an `OpenT`
+    - on recombination, exported type flows into that `OpenT`
+- flow for security
+  - control SQL propagation
+  - PoC as of 2016, taint analysis
+- dead code
+  - granular version of tree shaking
 
 # How to use Flow?
 
