@@ -1,0 +1,2 @@
+- https://flow.org/en/docs/config/options/#toc-no-flowlib-boolean
+- https://github.com/facebook/flow/tree/v0.52.0/lib
