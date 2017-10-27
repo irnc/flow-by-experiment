@@ -1,0 +1,9 @@
+{
+  "name": "polymorphic-type",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "flow-bin": "^0.56.0"
+  }
+}
